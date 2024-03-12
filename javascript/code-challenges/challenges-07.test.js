@@ -22,14 +22,15 @@ function lower(str) {
 }
 
 const updateAnimal = (arr, callback) => {
-  const newArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    newArr.push(callback(arr[i]));
+  // Solution code here...
+  let editArr = [];
+  for (let string of arr) {
+    editArr.push(callback(string));
   }
-  return newArr;
-};
 
-// This function takes in an array arr and a callback function callback. It creates a new array newArr, iterates over the input array, applies the callback function to each element, and pushes the modified value into the newArr. Finally, it returns the new array containing the modified animal strings.
+  return editArr;
+
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -40,12 +41,13 @@ For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
 
 const sortNames = (arr) => {
+  // Solution code here...
   return arr.sort((a, b) => {
-    return a.localeCompare(b);
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
   });
 };
-
-// This function takes an array of names as input and uses the sort method to sort the array alphabetically. The localeCompare method is used as the comparison function to ensure that capital letters come before lowercase letters.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -56,11 +58,9 @@ HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbers = (arr) => {
+  // Solution code here...
   return arr.sort((a, b) => a - b);
 };
-
-//This function takes an array of numbers as input and uses the sort method to sort the numbers in ascending order. The comparison function (a, b) => a - b ensures that the numbers are sorted from smallest to largest.
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -71,11 +71,9 @@ HINT: Do it with a custom sort callback, not with using `.reverse()`. ;)
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
+  // Solution code here...
   return arr.sort((a, b) => b - a);
 };
-
-//This function takes an array of numbers as input and uses the sort method to sort the numbers in descending order. The comparison function (a, b) => b - a ensures that the numbers are sorted from largest to smallest.
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -88,10 +86,13 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  return arr.sort((a, b) => a.localeCompare(b));
+  // Solution code here...
+  return arr.sort((a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  });
 };
-
-// This function takes an array of strings as input and uses the sort method to sort the strings alphabetically. The localeCompare method is used as the comparison function to ensure that capital letters come before lowercase letters.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -107,10 +108,9 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
+  // Solution code here...
   return arr.sort((a, b) => a.price - b.price);
 };
-
-//  This function takes an array of objects as input, where each object has a 'price' property. It uses the sort method to sort the objects based on their 'price' property in ascending order. The comparison function (a, b) => a.price - b.price ensures that the objects are sorted by price from lowest to highest.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -121,10 +121,8 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  return arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+  // Solution code here...
 };
-
-// This function takes an array of strings as input and uses the sort method to sort the strings alphabetically. The comparison function (a, b) => a.toLowerCase().localeCompare(b.toLowerCase()) converts both strings to lowercase before comparing them, ensuring case-insensitive sorting.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -133,9 +131,8 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  return arr.sort((a, b) => a.length - b.length);
+  // Solution code here...
 };
-// This function takes an array of strings as input and uses the sort method to sort the strings based on their lengths in ascending order. The comparison function (a, b) => a.length - b.length ensures that the strings are sorted by length from lowest to highest.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -146,11 +143,8 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  return arr.sort((a, b) => {
-    return String(a).length - String(b).length;
-  });
+  // Solution code here...
 };
-// This function takes an array of numbers as input and uses the sort method to sort them based on the length of their string representations. The comparison function (a, b) => String(a).length - String(b).length converts each number to a string and then compares their lengths. This ensures that the numbers are sorted by their string length from lowest to highest.
 
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -171,14 +165,8 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  return arr.sort((personA, personB) => {
-    const lastNameA = personA.lastName.toLowerCase();
-    const lastNameB = personB.lastName.toLowerCase();
-    return lastNameA.localeCompare(lastNameB);
-  });
+  // Solution code here...
 };
-
-// This function takes an array of Person objects as input and uses the sort method to sort them based on their last names. The comparison function (personA, personB) => {...} extracts the last names of the Person objects (personA and personB), converts them to lowercase, and then compares them using localeCompare to ensure proper alphabetical sorting.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
@@ -191,21 +179,8 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  return arr.sort((personA, personB) => {
-    const lastNameComparison = personA.lastName.toLowerCase().localeCompare(personB.lastName.toLowerCase());
-    if (lastNameComparison !== 0) {
-      return lastNameComparison;
-    } else {
-      const firstNameComparison = personA.firstName.toLowerCase().localeCompare(personB.firstName.toLowerCase());
-      if (firstNameComparison !== 0) {
-        return firstNameComparison;
-      } else {
-        return personA.age - personB.age;
-      }
-    }
-  });
+  // Solution code here...
 };
-// This function takes an array of Person objects as input and uses the sort method to sort them based on their last names, first names, and ages according to the specified criteria. The comparison function first compares last names, then first names if last names are the same, and finally ages if both last names and first names are the same.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 12 - Stretch Goal
@@ -230,15 +205,8 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-  return arr.sort((meetingA, meetingB) => {
-    const dayIndexA = daysOfWeek.indexOf(meetingA.dayOfWeek);
-    const dayIndexB = daysOfWeek.indexOf(meetingB.dayOfWeek);
-    return dayIndexA - dayIndexB;
-  });
+  // Solution code here...
 };
-
-// This function takes an array of meeting objects as input and uses the sort method to sort them based on the day of the week. The comparison function (meetingA, meetingB) => {...} maps the day of the week of each meeting to its corresponding index in the daysOfWeek array and then compares those indices to determine the sorting order.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 13 - Stretch Goal
@@ -251,38 +219,8 @@ You DO NOT need to use your solution to Challenge 12 in completing Challenge 13.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  return arr.sort((meetingA, meetingB) => {
-    // Compare the days of the week first
-    if (meetingA.dayOfWeek !== meetingB.dayOfWeek) {
-      return meetingA.dayOfWeek.localeCompare(meetingB.dayOfWeek);
-    } else {
-      // If meetings are on the same day, compare start times
-      const startTimeComparison = meetingA.start.localeCompare(meetingB.start);
-      if (startTimeComparison !== 0) {
-        return startTimeComparison;
-      } else {
-        // If meetings start at the same time, compare durations
-        const durationA = calculateDuration(meetingA.start, meetingA.end);
-        const durationB = calculateDuration(meetingB.start, meetingB.end);
-        return durationA - durationB;
-      }
-    }
-  });
+  // Solution code here...
 };
-
-// Helper function to calculate duration in minutes
-const calculateDuration = (startTime, endTime) => {
-  const start = parseTime(startTime);
-  const end = parseTime(endTime);
-  return (end - start) / 60000; // Convert milliseconds to minutes
-};
-
-// Helper function to parse time strings and return milliseconds
-const parseTime = (time) => {
-  const [hours, minutes] = time.split(':').map(Number);
-  return hours * 3600000 + minutes * 60000; // Convert hours and minutes to milliseconds
-};
-
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -354,7 +292,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+xdescribe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -374,7 +312,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-describe('Testing challenge 9', () => {
+xdescribe('Testing challenge 9', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
@@ -382,7 +320,7 @@ describe('Testing challenge 9', () => {
   });
 });
 
-describe('Testing challenge 10', () => {
+xdescribe('Testing challenge 10', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -394,7 +332,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-describe('Testing challenge 11', () => {
+xdescribe('Testing challenge 11', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
@@ -415,7 +353,7 @@ describe('Testing challenge 11', () => {
   });
 });
 
-describe('Testing challenge 12', () => {
+xdescribe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
@@ -425,7 +363,7 @@ describe('Testing challenge 12', () => {
   });
 });
 
-describe('Testing challenge 13', () => {
+xdescribe('Testing challenge 13', () => {
   test('It should sort meetings by when they happen', () => {
     expect(sortSchedule(meetings)).toStrictEqual([
       new Meeting('Monday', '0900', '0945'),

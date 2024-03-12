@@ -12,7 +12,7 @@ const stuff = {
   toys: 57,
   toothbrush: 'frayed',
   cars: ['Toyota', 'Mazda']
-}
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1
@@ -28,12 +28,9 @@ Prove that the original people array is unchanged
 ------------------------------------------------------------------------------------------------ */
 
 const addPeople = (arr) => {
-  const newArr = [...arr];
-  newArr.unshift('Odie');
-  newArr.push('Garfield');
-  return newArr;
+  // Solution code here...
+  return ['Odie', ...people, 'Garfield'];
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -49,11 +46,11 @@ Ensure that the original people array and stuff objects are unchanged
 ------------------------------------------------------------------------------------------------ */
 
 const setState = (arr, obj) => {
-  const newState = {
+  // Solution code here...
+  return {
     people: [...arr],
-    stuff: {...obj }
-  };
-  return newState;
+    stuff: {...obj}
+  }
 };
 
 
@@ -74,17 +71,17 @@ Ensure that the original people array and stuff objects are unchanged
 ------------------------------------------------------------------------------------------------ */
 
 const newState = (arr, obj) => {
-  const newCars = [...obj.cars, 'Ford'];
-  const newStuff = { ...obj.stuff, toothbrush: 'brand new', toys: obj.stuff.toys + 1 };
-  const newState = {
+  // Solution code here...
+  let newObj = {
     people: [...arr],
-    stuff: { ...obj.stuff, cars: newCars },
-  };
-  newState.stuff = newStuff;
-  return newState;
+    stuff: {...obj}
+  }
+  newObj.stuff.cars = [...obj.cars, "Ford"]
+  newObj.stuff.toothbrush = "brand new"
+  newObj.stuff.toys += 1
+  console.log(newObj, obj);
+  return newObj;
 };
-
-module.exports = { addPeople, setState, newState };
 
 
 /* ------------------------------------------------------------------------------------------------
