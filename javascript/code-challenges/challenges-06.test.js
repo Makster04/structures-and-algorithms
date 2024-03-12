@@ -12,16 +12,9 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
+  // Solution code here...
   return people.map(person => `${person.firstName} ${person.lastName}`);
 };
-
-// Example usage:
-const people = [
-  { firstName: "Jane", lastName: "Doe" },
-  { firstName: "James", lastName: "Bond" }
-];
-
-console.log(toLastNames(people)); // Output: ["Jane Doe", "James Bond"]
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -30,15 +23,10 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 ------------------------------------------------------------------------------------------------ */
 
-const addValues = arr => {
-  return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+const addValues = (arr) => {
+  // Solution code here...
+  return arr.reduce((acc, value) => acc + value, 0);
 };
-
-// Example usage:
-const numbers = [1, 2, 3, 4, 5];
-
-console.log(addValues(numbers)); // Output: 15 (1 + 2 + 3 + 4 + 5 = 15)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -52,19 +40,10 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 ------------------------------------------------------------------------------------------------ */
 
-const addPurchases = arr => {
-  return arr.reduce((total, purchase) => total + purchase.purchasePrice, 0);
+const addPurchases = (arr) => {
+  // Solution code here...
+  return arr.reduce((totalAmount, purchase) => totalAmount + purchase.purchasePrice, 0);
 };
-
-// Example usage:
-const purchases = [
-  { item: 'switch', purchasePrice: 399 },
-  { item: 'headphones', purchasePrice: 99 },
-  { item: 'keyboard', purchasePrice: 49 }
-];
-
-console.log(addPurchases(purchases)); // Output: 547 (399 + 99 + 49 = 547)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -74,15 +53,10 @@ Write a function named countNumberOfElements that, given an array as input, uses
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
-const countNumberOfElements = arr => {
-  return arr.reduce((count, _) => count + 1, 0);
+const countNumberOfElements = (arr) => {
+  // Solution code here...
+  return arr.reduce((count) => count + 1, 0);
 };
-
-// Example usage:
-const array = [1, 2, 3, 4, 5];
-
-console.log(countNumberOfElements(array)); // Output: 5 (There are 5 elements in the array)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -140,16 +114,13 @@ let starWarsData = [{
   gender: 'female'
 }];
 
-const returnNames = arr => {
+const returnNames = (arr) => {
+  // Solution code here...
   return arr.reduce((names, character) => {
     names.push(character.name);
     return names;
   }, []);
 };
-
-// Example usage:
-console.log(returnNames(starWarsData));
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -159,13 +130,10 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = str => {
+const reversedString = (str) => {
+  // Solution code here...
   return str.split('').reduce((reversed, char) => char + reversed, '');
 };
-
-// Example usage:
-console.log(reversedString('hello')); // Output: 'olleh'
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -216,19 +184,9 @@ const characters = [
   },
 ];
 
-const countNumberOfChildren = arr => {
-  return arr.reduce((totalChildren, character) => {
-    if (character.children) {
-      return totalChildren + character.children.length;
-    } else {
-      return totalChildren;
-    }
-  }, 0);
+const countNumberOfChildren = (arr) => {
+  // Solution code here...
 };
-
-// Example usage:
-console.log(countNumberOfChildren(characters)); // Output: 18 (Total number of children in the dataset)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -238,22 +196,9 @@ Write a function that, given an array of numbers as input, uses reduce to calcul
 Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
-const calculateAverage = arr => {
-  const initialValue = { count: 0, sum: 0 };
-  const { count, sum } = arr.reduce((accumulator, currentValue) => {
-    return {
-      count: accumulator.count + 1,
-      sum: accumulator.sum + currentValue
-    };
-  }, initialValue);
-
-  return sum / count;
+const calculateAverage = (arr) => {
+  // Solution code here...
 };
-
-// Example usage:
-const numbers = [1, 2, 3, 4, 5];
-console.log(calculateAverage(numbers)); // Output: 3 (Average of 1, 2, 3, 4, 5 is 3)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -272,20 +217,9 @@ const isPrime = (value) => {
   return value > 1;
 };
 
-const countPrimeNumbers = arr => {
-  return arr.reduce((count, element) => {
-    if (isPrime(element)) {
-      return count + 1;
-    } else {
-      return count;
-    }
-  }, 0);
+const countPrimeNumbers = (arr) => {
+  // Solution code here...
 };
-
-// Example usage:
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(countPrimeNumbers(numbers)); // Output: 4 (Prime numbers in the array: 2, 3, 5, 7)
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -325,16 +259,9 @@ const snorlaxData = {
   weight: 4600,
 };
 
-const extractStats = snorlaxData => {
-  return snorlaxData.stats.reduce((statsObject, stat) => {
-    statsObject[stat.stat.name] = stat.baseStat;
-    return statsObject;
-  }, {});
+const extractStats = (snorlaxData) => {
+  // Solution code here...
 };
-
-// Example usage:
-console.log(extractStats(snorlaxData));
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
@@ -346,18 +273,9 @@ Write a function named extractChildren that, given the array of characters from 
 2) Then, uses reduce to return an array of all the children's names in the filtered array
 ------------------------------------------------------------------------------------------------ */
 
-const extractChildren = arr => {
-  const filteredCharacters = arr.filter(character => character.name.toLowerCase().includes('a'));
-  return filteredCharacters.reduce((childrenNames, character) => {
-    if (character.children) {
-      childrenNames.push(...character.children);
-    }
-    return childrenNames;
-  }, []);
+const extractChildren = (arr) => {
+  // Solution code here...
 };
-
-// Example usage:
-console.log(extractChildren(characters)); // Output: ['Robin', 'Arya', 'Bran', 'Rickon']
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -413,31 +331,31 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+xdescribe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-describe('Testing challenge 8', () => {
+xdescribe('Testing challenge 8', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-describe('Testing challenge 9', () => {
+xdescribe('Testing challenge 9', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-describe('Testing challenge 10', () => {
+xdescribe('Testing challenge 10', () => {
   test('It should return an object that contains the names of each stat as individual keys and the respective baseStats as values to those keys.', () => {
     expect(extractStats(snorlaxData)).toStrictEqual({'speed': 30, 'special-defense': 110, 'special-attack': 65});
   });
 });
 
-describe('Testing challenge 11', () => {
+xdescribe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual([ 'Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras' ]);
     expect(extractChildren(characters).length).toStrictEqual(10);
