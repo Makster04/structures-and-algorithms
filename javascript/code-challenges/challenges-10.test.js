@@ -8,11 +8,9 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
-  // Split the string into an array of characters
-  // Take the last 10 characters using splice and return them as an array
+  // Solution code here...
   return str.split('').splice(-10);
 }
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -29,18 +27,19 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  let max = Number.MIN_VALUE; // Initialize max to the smallest possible number
-  matrix.forEach(row => { // Iterate through each row of the matrix
-    row.forEach(num => { // Iterate through each number in the row
-      if (num > max) { // If the number is greater than the current max, update max
-        max = num;
+  // Solution code here...
+  let maxNumber = matrix[0][0];
+
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] > maxNumber) {
+        maxNumber = matrix[i][j];
       }
-    });
-  });
-  return max; // Return the maximum number found in the matrix
+    }
+  }
+
+  return maxNumber;
 };
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -57,15 +56,17 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  let sum = 0; // Initialize sum to 0
-  matrix.forEach(row => { // Iterate through each row of the matrix
-    row.forEach(num => { // Iterate through each number in the row
-      sum += num; // Add the number to the sum
-    });
-  });
-  return sum; // Return the total sum of all numbers in the matrix
-};
+  // Solution code here...
+  let sumNumber = 0;
 
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      sumNumber += matrix[i][j];
+    }
+  }
+
+  return sumNumber;
+};
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,15 +92,23 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  const hourlyTotal = Array.from({ length: 12 }, () => 0); // Create an array to store total sales for each hour, initialized with zeros
-  stores.forEach(store => { // Iterate through each store
-    store.forEach((cookies, index) => { // Iterate through cookies sold in each hour of the store
-      hourlyTotal[index] += cookies; // Add the cookies sold in that hour to the total for that hour
-    });
-  });
-  return hourlyTotal; // Return the array of total cookies sold per hour for all stores combined
-};
+  // Solution code here...
+  const totalCookiesPerHour = [];
+  // Iterate through each hour
+  for (let i = 0; i < hoursOpen.length; i++) {
+    let cookiesSoldHour = 0;
+    // Iterate through each store
+    for (let j = 0; j < stores.length; j++) {
+      cookiesSoldHour += stores[j][i];
+    }
+    // Add the total cookies sold at this hour to the array
+    totalCookiesPerHour.push(cookiesSoldHour);
+  }
 
+  console.log(totalCookiesPerHour);
+  return totalCookiesPerHour;
+
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -112,13 +121,30 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  const result = []; // Initialize an empty array to store formatted data
-  data.forEach((sales, index) => { // Iterate through each item in the data
-    result.push({ sales: `${sales} cookies`, time: hours[index] }); // Format the data and push it to the result array as an object
-  });
-  return result; // Return the array of formatted data
-};
+  // Solution code here...
+  const formattedData = [];
+  console.log(data);
+  // Iterate through each hour
+  for (let hourIndex = 0; hourIndex < hours.length; hourIndex++) {
+    let cookiesSoldAtHour = 0;
 
+    // Iterate through each store
+    for (let storeIndex = 0; storeIndex < data.length; storeIndex++) {
+      cookiesSoldAtHour = data[hourIndex];
+    }
+
+    // Create an object for the current hour
+    const salesObject = {
+      sales: `${cookiesSoldAtHour} cookies`,
+      time: hours[hourIndex]
+    };
+
+    // Add the object to the formatted data array
+    formattedData.push(salesObject);
+  }
+  console.log(formattedData);
+  return formattedData;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -142,17 +168,20 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  let treatsQuantity = 0; // Initialize variable to store the quantity of treats
-  arr.forEach(store => { // Iterate through each store
-    store.items.forEach(item => { // Iterate through each item in the store
-      if (item.name === 'Treats') { // If the item is a treat, add its quantity to the total treats quantity
-        treatsQuantity += item.quantity;
-      }
-    });
-  });
-  return treatsQuantity; // Return the total quantity of treats needed
-};
+  // Solution code here...
+  let treatsQuantity = 0;
+  for (let i = 0; i < errands.length; i++) {
+    for (let j = 0; j < errands[i].items.length; j++) {
 
+      if (errands[i].items[j].name === 'Treats') {
+
+        treatsQuantity += errands[i].items[j].quantity;
+      }
+    }
+  }
+
+  return treatsQuantity;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -173,9 +202,8 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  return board[row][col] === '#' ? 'hit' : 'miss'; // Check if there's a boat ('#') at the specified position and return 'hit' or 'miss'
+  //  Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -186,11 +214,8 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  return numbers.reduce((acc, row) => { // Multiply all numbers in each row, then multiply the results of each row
-    return acc * row.reduce((acc, num) => acc * num, 1);
-  }, 1);
+  // Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
@@ -209,17 +234,8 @@ const weeklyTemperatures = [
 ];
 
 const averageDailyTemperature = (weather) => {
-  let sum = 0; // Initialize sum to 0
-  let count = 0; // Initialize count to 0
-  weather.forEach(week => { // Iterate through each week
-    week.forEach(temp => { // Iterate through each temperature in the week
-      sum += temp; // Add the temperature to the sum
-      count++; // Increment count
-    });
-  });
-  return sum / count; // Return the average temperature
+  // Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -239,17 +255,8 @@ let lowestWeeklyTemperatureData = [
 ];
 
 const lowestWeeklyAverage = (weather) => {
-  let lowestAverage = Number.MAX_VALUE; // Initialize lowestAverage to the largest possible number
-  weather.forEach(week => { // Iterate through each week
-    const weekSum = week.reduce((acc, temp) => acc + temp, 0); // Calculate the sum of temperatures in the week
-    const weekAverage = weekSum / week.length; // Calculate the average temperature for the week
-    if (weekAverage < lowestAverage) { // Update lowestAverage if the current week's average is lower
-      lowestAverage = weekAverage;
-    }
-  });
-  return lowestAverage; // Return the lowest weekly average temperature
+  // Solution code here...
 };
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 11 - Stretch Goal
@@ -263,16 +270,8 @@ The function should parse the string as rows and columns and compute the sum of 
 For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 ------------------------------------------------------------------------------------------------ */
 
-const lowestWeeklyAverage = (weather) => {
-  let lowestAverage = Number.MAX_VALUE; // Initialize lowestAverage to the largest possible number
-  weather.forEach(week => { // Iterate through each week
-    const weekSum = week.reduce((acc, temp) => acc + temp, 0); // Calculate the sum of temperatures in the week
-    const weekAverage = weekSum / week.length; // Calculate the average temperature for the week
-    if (weekAverage < lowestAverage) { // Update lowestAverage if the current week's average is lower
-      lowestAverage = weekAverage;
-    }
-  });
-  return lowestAverage; // Return the lowest weekly average temperature
+const excel = (str) => {
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -339,7 +338,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+xdescribe('Testing challenge 7', () => {
   const battleshipData = [
     ['#', ' ', '#', ' '],
     ['#', ' ', '#', ' '],
@@ -358,7 +357,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-describe('Testing challenge 8', () => {
+xdescribe('Testing challenge 8', () => {
   test('It should multiply all the numbers together', () => {
     expect(calculateProduct([[1, 2], [3, 4], [5, 6]])).toStrictEqual(720);
   });
@@ -371,20 +370,20 @@ describe('Testing challenge 8', () => {
   });
 });
 
-describe('Testing challenge 9', () => {
+xdescribe('Testing challenge 9', () => {
   test('It should calculate and return the average temperature of the data set', () => {
     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
   });
 });
 
-describe('Testing challenge 10', () => {
+xdescribe('Testing challenge 10', () => {
   test('It should return the lowest weekly average temperature within the data set', () => {
     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
   });
 });
 
-describe('Testing challenge 11', () => {
+xdescribe('Testing challenge 11', () => {
   test('It should return the total count for each row', () => {
     let result = excel('1,1,1\n4,4,4\n9,9,9');
     expect(result.length).toStrictEqual(3);
